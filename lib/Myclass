@@ -1,0 +1,14 @@
+/* las clases en dart son moldes y nos permiten crear objetos
+  se crean con la palabra reservada class
+ */
+
+class Myclass {
+  /* la clase puede tener atributos que definen las caracteristicas */
+  int? age;
+  String? name;
+
+  /* la clase puede tener metodos, que definen las acciones */
+  void sayHello() {
+    print("Hola $name, que tal estas?");
+  }
+}

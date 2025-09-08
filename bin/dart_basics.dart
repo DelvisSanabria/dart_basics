@@ -1,4 +1,7 @@
+import 'dart:ffi';
 import 'dart:io';
+
+import 'package:dart_basics/Myclass';
 /* Los imports son llaves para darnos acceso a las librerias que nos dotan de 
 funcionalidades  */
 
@@ -493,7 +496,7 @@ void main(List<String> arguments) {
 
   /* llamemos a nuestro metodo de maps */
 
-  mapsExample();
+  /* mapsExample(); */
 
   /* llamemos a nuestros metodos de bucles */
 
@@ -502,6 +505,26 @@ void main(List<String> arguments) {
   setLoop();
 
   mapLoop();
+
+  /* Llamemos a nuestros ejercicios */
+
+  excercises5();
+  excercises6();
+  excercises7();
+
+  /* Para llamar a mi clase necesito crear un objeto, un instancia de esta clase */
+
+  var myClass = Myclass();
+  myClass.age = 20;
+  myClass.name = "Delvis";
+  myClass.sayHello();
+
+  /* creamos una instancia de la clase y personalizamos su comportamiento */
+
+  print(myClass.name);
+
+  /* nullability */
+  nullability();
 }
 
 /* Los metodos son funciones (cajitas cerradas) que contienen un conjunto de instrucciones */
@@ -794,8 +817,244 @@ void mapsExample() {
 
 /* Son estructuras de control que nos permiten repetir instrucciones segun un criterio */
 
-void listLoop() {}
+void listLoop() {
+  List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-void setLoop() {}
+  /* para recorrer la lista utilizamos un for que nos permite recorrer la lista
+    es decir que se repite la instruccion tantas veces como elementos tenga la lista
 
-void mapLoop() {}
+    su estructura es la siguiente:
+    for (variable in lista) {
+      instrucciones
+    }
+
+    o tambien
+    for (variable i = 0; i < lista.length; i++) {
+      instrucciones
+    }
+   */
+
+  /* For basico */
+
+  /* Nos permite recorrer cada uno de los elementos dentro de la lista con el indice */
+  for (int i = 0; i < numbers.length; i++) {
+    print(numbers[i]);
+    /* La i representa el indice de la lista */
+  }
+
+  /* For in */
+
+  /* Nos permite recorrer cada uno de los elementos dentro de la lista */
+
+  for (int number in numbers) {
+    print("Con for in $number");
+  }
+
+  /* Tendremos tambien el for each que nos permite recorrer cada uno de los elementos */
+
+  /* La estructura es la siguiente:
+    variable.forEach((element) {
+      instrucciones
+    })
+   */
+
+  numbers.forEach((number) {
+    print("Con for each $number");
+  });
+
+  /* Tambien se puede con */
+
+  numbers.forEach(print);
+}
+
+void setLoop() {
+  Set<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+  for (int number in numbers) {
+    print("Recorriendo el set con for in $number");
+  }
+
+  /* Tambien se puede usar el for each */
+  numbers.forEach((number) {
+    print("Recorriendo el set con for each $number");
+  });
+
+  /* Tambien se puede con */
+  numbers.forEach(print);
+}
+
+void mapLoop() {
+  Map<String, int> numbers = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+  };
+
+  /* Para recorrer elementos de un mapa */
+
+  /* Necesitamos recorrer las entradas de nuestro mapa */
+
+  for (var element in numbers.entries) {
+    print("La clave es ${element.key} y el valor es ${element.value}");
+  }
+
+  /* Se puede obtener tambien solo las claves y solo los valores */
+
+  for (var key in numbers.keys) {
+    print("La clave es $key");
+  }
+
+  for (var value in numbers.values) {
+    print("El valor es $value");
+  }
+
+  /* Tambien se puede usar el for each */
+
+  numbers.forEach((key, value) {
+    print("La clave es $key y el valor es $value");
+  });
+
+  /* Para maps, debemos colocar la clave y el valor */
+}
+
+void excercises5() {
+  /* Ejercicio 5
+
+  Objetivo: Escribe un programa que tome una lista de numeros enteros y calcule
+  la suma de todos los numeros pares en la lista.
+
+  ejemplo:
+  Entrada:[1,2,3,4,5,6]
+  Salida: la suma de los numeros pares es: 12
+
+  Tip si a un numero le hacemos %2 == 0 es par.
+   */
+
+  var example = [2, 5, 6, 7, 8];
+
+  var parNumbers = 0;
+  for (var number in example) {
+    if (number % 2 == 0) {
+      parNumbers += number;
+    }
+  }
+  print("la suma de los numeros pares es: $parNumbers");
+}
+
+void excercises6() {
+  /* Ejercicio 6 Filtrar palabras unicas en un set
+
+  Objetivo: Escribe un programa en Dart que reciba una lista de palabras con
+  algunas repetidas y almacene solo las palabras unicas en un Set.
+  Luego, muestra el conjunto resultante
+
+  ejemplo:
+  Entrada:["dart","flutter","dart","codigo","flutter,"movil"]
+  Salida: {dart, flutter,codigo, movil}
+
+  Tip si a un numero le hacemos %2 == 0 es par.
+   */
+
+  List<String> words = [
+    "dart",
+    "flutter",
+    "dart",
+    "codigo",
+    "flutter",
+    "movil",
+  ];
+
+  Set<String> uniqueWorks = {};
+  for (var word in words) {
+    if (!uniqueWorks.contains(word)) {
+      uniqueWorks.add(word);
+    }
+  }
+  print("El set con las palabras filtradas es: \n $uniqueWorks");
+
+  /* Segunda solucion */
+  print(words.toSet());
+
+  /* Tercera solucion */
+
+  for (var word in words) {
+    uniqueWorks.add(word);
+  }
+
+  print(uniqueWorks);
+}
+
+void excercises7() {
+  /* Ejercicio 7 Contar la frecuencia de palabras en un map
+
+  Objetivo: Escribe un programa en Dart que reciba una lista de palabras y cuente
+  cuantas veces aparece cada una, almacenando el resultado en un Map
+
+  ejemplo:
+  Entrada:["dart","flutter","dart","codigo","dart","flutter","movil"]
+  Salida: {dart: 3, flutter: 2,codigo: 1, movil: 1}
+
+  Tip si a un numero le hacemos %2 == 0 es par.
+   */
+
+  List<String> words = [
+    "dart",
+    "flutter",
+    "dart",
+    "codigo",
+    "flutter",
+    "dart",
+    "movil",
+  ];
+
+  Map<String, int> wordsCount = {};
+
+  for (var word in words) {
+    (wordsCount.containsKey(word))
+        ? wordsCount[word] = (wordsCount[word] ?? 0) + 1
+        : wordsCount[word] = 1;
+  }
+  print("El set con las palabras filtradas es: \n $wordsCount");
+}
+
+/* Si queremos crear diferentes ficheros podemos usar las clases que son 
+  moldes, una base para realizar una accion, contiene los atributos (caracteristicas)
+  y los metodos (las funciones que realiza)
+ */
+
+void nullability() {
+  /* Nullability */
+
+  /* Un valor puede ser null es decir que puede tener o no tener un valor */
+  var name = "Delvis";
+  /* name = null; */
+
+  /* las variables no puede ser nulas */
+  /* si queremos que sea nula debemos hacerla nulable */
+  String? name2 = null;
+  print(name2);
+  name2 = "David";
+  print(name2);
+
+  /* si queremos asignar un valor que puede llegar a ser nulo pero estamos
+  seguros que no, debemos hacerlo de la siguiente manera  */
+
+  String? name3 = "Delvis";
+  var name4 = name3 ?? "No se encontro el nombre";
+  print(name4);
+
+  /* tambien podemos hacer */
+  var name5 = name3!;
+  print(name5);
+
+  /* Otra forma */
+  name3 ??= "No se encontro el nombre que me pides";
+  print(name3);
+}
