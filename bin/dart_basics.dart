@@ -1,4 +1,16 @@
+import 'dart:io';
+/* Los imports son llaves para darnos acceso a las librerias que nos dotan de 
+funcionalidades  */
+
 void main(List<String> arguments) {
+  //llamamos a nuestros metodos de la siguiente manera
+
+  greating();
+
+  //llamar con parametros
+
+  greatingWithParameter('Angelo');
+
   //Los comentarios en Dart comienzan con // y terminan con el salto de línea
 
   /*
@@ -299,4 +311,491 @@ void main(List<String> arguments) {
   //Re hagamos los anteriores ejercicios usando la consola
 
   //Ejercicio 1
+
+  print("Ingrese su año de nacimiento");
+  String dateTwo = stdin.readLineSync()!;
+  /* 
+  stdin es para recibir datos desde la consola
+  readLineSync() es para recibir datos desde la consola
+  el ! es para decirle que no va a ser nulo */
+  int yearTwo = int.parse(date);
+  int currentYearTwo = 2025;
+  int myAgeTwo = currentYear - year;
+  print("Tienes $myAge años");
+
+  /* debemos cambiar la configuracion de nuestra consola para abrir dart en una terminal */
+
+  /* Las estructuras de control de flujo condicionales nos permiten tomar decisiones
+    en base a si se cumple una condicion o no
+
+    if else nos permite tomar decisiones en base a si se cumple una condicion o no
+
+   */
+
+  /* hagamos un ejercicio de entrada a la discoteca */
+
+  /* if sera la condicion que se espera cumplir de ser verdadera lanza un true */
+  if (myAge >= 18) {
+    /* Para verificar condiciones tendremos variadades de operadores de comparacion
+      como el == (igual que), != (diferente que), > (mayor que), < (menor que),
+      >= (mayor o igual que), <= (menor o igual que)
+     */
+    print("Puedes entrar a la discoteca");
+  } else {
+    /* else es el camino que tomara el codigo si la condicion no se cumple */
+    print("No puedes entrar a la discoteca");
+  }
+
+  /* Hagamos un ejercicio de años de experiencia */
+
+  int experienceYears = 3;
+
+  if (experienceYears == 3) {
+    print("Eres un programador junior");
+  } else if (experienceYears > 3 && experienceYears < 5) {
+    /* else if es una condicion que significa sino si, en otras palabras
+    si no se cumple la condicion de arriba verifica si esta condicion se cumple
+     */
+    print("eres un programador semi senior");
+  } else if (experienceYears >= 5) {
+    print("Eres un programador senior");
+  }
+
+  /* Para operaciones pequenas podemos usar el operador ternario, este nos
+  permite tomar decisiones en base a si se cumple una condicion o no en 
+  una sola linea */
+
+  String ageResult = (myAge >= 18)
+      ? "Eres mayor de edad"
+      : "Eres menor de edad";
+  print(ageResult);
+
+  /* Estamos haciendo una comprobacion directa de la condicion */
+
+  /* Switch */
+
+  /* El switch nos permite tomar decisiones en base a una variable y una serie de condiciones
+   */
+  print("Introduce el dia de la semana");
+  int numbersOfTheWeek = int.parse(stdin.readLineSync()!);
+
+  //con if else serias lo siguiente:
+  /*  if (numbersOfTheWeek == 1) {
+    print("Lunes");
+  } else if (numbersOfTheWeek == 2) {
+    print("Martes");
+  } else if (numbersOfTheWeek == 3) {
+    print("Miercoles");
+  } else if (numbersOfTheWeek == 4) {
+    print("Jueves");
+  } else if (numbersOfTheWeek == 5) {
+    print("Viernes");
+  } else if (numbersOfTheWeek == 6) {
+    print("Sabado");
+  } else if (numbersOfTheWeek == 7) {
+    print("Domingo");
+  } */
+
+  //Con switch
+
+  switch (numbersOfTheWeek) {
+    case 1:
+      print("Lunes");
+      break;
+    /* El break nos permite salir de un switch cuando se cumple una condicion */
+    case 2:
+      print("Martes");
+    case 3:
+      print("Miercoles");
+    case 4:
+      print("Jueves");
+    case 5:
+      print("Viernes");
+    case 6:
+      print("Sabado");
+    case 7:
+      print("Domingo");
+    default:
+      print("No es un dia de la semana");
+  }
+
+  /* Ejercicio 3 
+  
+  Objetivo:
+
+  Escribe un programa en Dart que determine si un numero ingresado por el usuario
+  es positivo, negativo o cero.
+  */
+
+  print("Introduce un numero:");
+  int userNumber = int.parse(stdin.readLineSync()!);
+
+  if (userNumber == 0) {
+    print("El numero es 0");
+  } else if (userNumber < 0) {
+    print("El numero es negativo");
+  } else {
+    print("El numero es positivo");
+  }
+
+  /* Ejercicio 4
+  Objetivo:
+  Escribe un programa en Dart que reciba un numero entre 1 y 12 e  imprima el 
+  nombre del mes correspondiente del año
+   */
+
+  print("Introduce el numero de tu mes:");
+
+  int monthNumber = int.parse(stdin.readLineSync()!);
+
+  switch (monthNumber) {
+    case 1:
+      print("Estas en el mes de enero");
+    case 2:
+      print("Estas en el mes de febrero");
+    case 3:
+      print("Estas en el mes de marzo");
+    case 4:
+      print("Estas en el mes de abril");
+    case 5:
+      print("Estas en el mes de mayo");
+    case 6:
+      print("Estas en el mes de junio");
+    case 7:
+      print("Estas en el mes de julio");
+    case 8:
+      print("Estas en el mes de agosto");
+    case 9:
+      print("Estas en el mes de septiembre");
+    case 10:
+      print("Estas en el mes de octubre");
+    case 11:
+      print("Estas en el mes de noviembre");
+    case 12:
+      print("Estas en el mes de diciembre");
+    default:
+      print("Ese no es mes estas tonto?");
+  }
+
+  /* Llamamos a nuestro metodo suma */
+  print(sum(1, 3));
+
+  /* Llamamos a nuestro metodo con parametros opcionales */
+  print(sumWithOptionalParameters(1, 3));
+  print(sumWithOptionalParameters2(numberOne: 1, numberTwo: 3));
+
+  /* llamemos a nuestro metodo de lista */
+
+  listExample();
+
+  /* llamemos a nuestro metodo de sets */
+  setsExample();
+
+  /* llamemos a nuestro metodo de maps */
+
+  mapsExample();
+
+  /* llamemos a nuestros metodos de bucles */
+
+  listLoop();
+
+  setLoop();
+
+  mapLoop();
 }
+
+/* Los metodos son funciones (cajitas cerradas) que contienen un conjunto de instrucciones */
+
+/* Los metodos pueden recibir parametros y devolver valores
+
+su estructura basica es la siguiente:
+
+void nombreDelMetodo(parametro1, parametro2){
+    
+}
+
+ */
+
+void greating() {
+  var name = "Miguel";
+  print("Hola $name te saludo desde mi metodo");
+}
+
+//metodo con parametros
+
+/* los parametros de entrada son variables que se pasan al metodo para modificar
+su comportamiento */
+void greatingWithParameter(String name) {
+  print("Hola $name te saludo desde mi metodo");
+}
+
+/* Un reto seria organizar en metodos, todas las partes que realizamos en main */
+
+/* tendremos tambien funciones que retornen valores */
+
+/* debo declarar el tipo de dato que va a devolver la funcion y esta solo podra
+retornar un valor del tipo especificado */
+int sum(int numberOne, int numberTwo) {
+  return numberOne + numberTwo;
+
+  /* El return nos permite devolver un valor ya que las funciones son metodos
+  aislados que realizan una tarea especifica  y no retornan nada fuera de su aislamiento*/
+
+  /* luego del return no se pueden poner mas instrucciones ya que a llegar al return
+  la funcion termina */
+}
+
+/* podemos crear funciones con parametros opcionales */
+
+int sumWithOptionalParameters(int numberOne, [int numberTwo = 0]) {
+  return numberOne + numberTwo;
+}
+
+//o tambien
+
+int sumWithOptionalParameters2({int numberOne = 0, int numberTwo = 0}) {
+  return numberOne + numberTwo;
+}
+
+/* funciones flecha  */
+
+/* es una forma mas corta de escribir funciones que retornan valores de forma 
+  automatica
+ */
+
+int sumWithOptionalParameters3(int numberOne, int numberTwo) =>
+    numberOne + numberTwo;
+
+/* Listas */
+
+/* Son colecciones de elementos que pueden ser de cualquier tipo */
+
+/* Las listas se declaran con corchetes */
+
+void listExample() {
+  /* paraa declarar una lista utilizamos la siguiente sintaxis
+    List<tipoDeElemento> nombreDeLaLista = [];
+   */
+  List<String> names = ["Miguel", "Fernando", "Luis", "Delvis"];
+
+  /* Solo podra contener elementos del mismo tipo */
+
+  //tambien se puede declarar de la siguiente manera
+  var names2 = ["Jose", "Angel", "Luisa", "Dart"];
+
+  print(names);
+
+  /* para acceder a un valor en especifco de la lista utilizamos el indice
+  el cual es la posicion de la lista donde esta el elemento en programacion
+  se comienza desde el 0 */
+  print(names[3]);
+
+  /* Metodos de Listas */
+
+  /* Si quisiera acceder al ultimo elemento de la lista */
+
+  print(names.last);
+
+  /* Si quisiera acceder al primer elemento de la lista */
+
+  print(names.first);
+
+  /* Si quisiera acceder al tamanio de la lista */
+
+  print(names.length);
+
+  /* acceder al ultimo desde la posicion */
+
+  print(names[names.length - 1]);
+
+  /* Si queremos modificar el valor de una posicion */
+  names[0] = "Miguel Angel";
+
+  print(names);
+
+  /* Si queremos agregar un elemento */
+
+  names.add("David");
+
+  print(names);
+
+  /* Si queremos agregar mas de un elemento */
+
+  names.addAll(names2);
+  print(names);
+
+  /* Si queremos insertar un elemento en una posicion */
+  names.insert(0, "Maria");
+  print(names);
+
+  /* Si queremos eliminar un elemento */
+
+  names.remove("Luis");
+  print(names);
+
+  /* Si queremos eliminar por posicion */
+
+  names.removeAt(0);
+  print(names);
+
+  /* Si queremos limpiar la lista */
+  names.clear();
+  print(names);
+}
+
+/* Sets */
+
+/* Son colecciones de elementos que no pueden tener valores duplicados y los valores
+ no estan ordenados */
+
+void setsExample() {
+  /* para declarar un set utilizamos la siguiente sintaxis
+   Set<tipoDeElemento> nombreDeLaSet = {};
+   */
+
+  Set<String> names = {"Miguel", "Fernando", "Luis", "Delvis"};
+
+  //se pueden empezar vacios
+
+  Set<String> names2 = {};
+
+  print(names);
+
+  /* Si queremos agregar un elemento */
+
+  names2.add("Angelo");
+  print(names2);
+
+  /* Set es sensible a los cases UPPERCASE y LOWERCASE */
+
+  /* Si queremos eliminar un elemento */
+
+  names2.remove("Angelo");
+  print(names2);
+
+  /* Si queremos limpiar la set */
+
+  names2.clear();
+  print(names2);
+
+  /* Si queremos borrar varios elementos a la vez */
+  names.removeAll(names2);
+
+  /* si queremos agregar muchos elementos */
+
+  names2.addAll(names);
+  print(names2);
+
+  /* si queremos acceder al tamanio */
+
+  print(names2.length);
+
+  /* si queremos acceder al ultimo */
+
+  print(names2.last);
+
+  /* si queremos acceder al primero */
+
+  print(names2.first);
+
+  /* Si queremos comprobar si un elemento esta en la set  */
+
+  print(names2.contains("Miguel"));
+
+  /* como transformar una lista en un set */
+
+  List<String> names3 = ["Miguel", "Miguel", "Luis", "Delvis"];
+  Set<String> names4 = names3.toSet();
+  print(names4);
+
+  /* tambien se puede con */
+
+  Set<String> names5 = Set.from(names3);
+  print(names5);
+}
+
+/* Maps */
+
+/* Son colecciones de elementos que tienen una clave y un valor */
+
+void mapsExample() {
+  /* para declarar un map utilizamos la siguiente sintaxis
+   Map<tipoDeClave, tipoDeValor> nombreDelMap = {};
+   */
+
+  Map<String, String> person = {
+    "nombre": "Delvis",
+    "apellido": "Sanabria",
+    "ciudad": "Caracas",
+    "edad": "23",
+  };
+
+  print(person);
+
+  /* Si queremos acceder al valor de una clave */
+
+  print(person["apellido"]);
+
+  /* Si queremos modificar el valor de una clave */
+
+  person["apellido"] = "Sivira";
+  print(person);
+
+  /* Si queremos agregar un elemento */
+
+  person["pais"] = "Venezuela";
+  print(person);
+
+  /* Si queremos agregar mas de un elemento */
+
+  person.addAll({"intereses": "programming", "educacion": "autodidacta"});
+  print(person);
+
+  /* Si queremos eliminar un elemento */
+
+  person.remove("pais");
+  print(person);
+
+  /* Si queremos limpiar el map */
+
+  person.clear();
+  print(person);
+
+  /* Si queremos acceder al tamanio */
+
+  print(person.length);
+
+  /* Si queremos acceder a todas las claves */
+
+  print(person.keys);
+
+  /* Si queremos acceder a todos los valores */
+
+  print(person.values);
+
+  /* Si queremos acceder al ultimo */
+
+  print(person.keys.last);
+
+  /* Si queremos acceder al primero */
+
+  print(person.values.first);
+
+  /* Si queremos comprobar si una clave esta en el map */
+
+  print(person.containsKey("apellido"));
+
+  /* Si queremos comprobar si un valor esta en el map */
+
+  print(person.containsValue("Sivira"));
+}
+
+/* Bucles */
+
+/* Son estructuras de control que nos permiten repetir instrucciones segun un criterio */
+
+void listLoop() {}
+
+void setLoop() {}
+
+void mapLoop() {}
